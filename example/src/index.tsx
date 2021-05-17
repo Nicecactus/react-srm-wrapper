@@ -2,6 +2,6 @@ import './index.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import MyModuleLoader from './MyModuleLoader'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<MyModuleLoader />, document.getElementById('root'))

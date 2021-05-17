@@ -1,37 +1,70 @@
+<h3 align="center">React SRM Wrapper</h3>
+
 <p align="center">
-  <img width="200" height="200" alt="SRM logo" title="SRM" src="https://user-images.githubusercontent.com/5578546/115530331-f63cbd00-a293-11eb-9174-722f0fa9b9d8.png">
+  Easily integrate SRM into your React application
 </p>
 
-# SRM
+<p align="center">
+  <a href="https://badge.fury.io/js/%40robingoupil%2Freact-srm-wrapper"><img src="https://badge.fury.io/js/%40robingoupil%2Freact-srm-wrapper.svg" alt="npm version" ></a>
+</p>
 
-Core library for Standalone React Module
+## Table of contents
 
-[![NPM](https://img.shields.io/npm/v/srm.svg)](https://www.npmjs.com/package/srm) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+- [Quick start](#quick-start)
+- [API Reference](#api-reference)
 
-## Install
+## Quick start
 
-```bash
-yarn add @robingoupil/srm
-```
+Install `@robingoupil/react-srm-wrapper`:
 
-```bash
-npm install --save @robingoupil/srm
-```
+- with [npm](https://www.npmjs.com/): `npm install -S @robingoupil/react-srm-wrapper`
+- with [yarn](https://yarnpkg.com/): `yarn add @robingoupil/react-srm-wrapper`
 
-## Usage
+Create a loader component for your SRM.  
+We will assume that:
+* the asset-manifest.json file url is stored in `.env`  
+* once loaded, the SRM `render()` function is exposed in `window.myOrg.myModule`
+* the module will be served with the relative path `/my-module`
 
+#### **`MyModuleLoader.tsx`**
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
+import { ReactSRMWrapper } from '@robingoupil/react-srm-wrapper';
 
-import { SRM } from '@robingoupil/srm'
+const MyModuleLoader = () => {
+  return (
+    <>
+      <h2>React SRM wrapper</h2>
+      <ReactSRMWrapper assetManifestUrl={process.env.REACT_APP_ASSET_MANIFEST_URL!} exportPath="myOrg.myModule" basename="/my-module" />
+    </>
+  )
+};
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+export default MyModuleLoader;
 ```
 
-## License
+Expose the loader in your router ([example for React Router](https://reactrouter.com/web/guides/quick-start/1st-example-basic-routing))
 
-MIT © [rgoupil](https://github.com/rgoupil)
+## API Reference
+
+### [ReactSRMWrapper](https://github.com/rgoupil/react-srm-wrapper/blob/master/index.tsx)
+
+|||
+|-|-|
+| Selector | `ReactSRMWrapper` |
+
+### Inputs
+|||
+|-|-|
+| `assetManifestUrl` | Type: `string` <br /> URL to the `asset-manifest.json`. |
+| `exportPath` | Type: `string` <br /> Path to the exported `render()` function once the module has been loaded. |
+| `basename` | Type: `string` <br /> Default value: `/` <br /> Relative path the module is being served from. |
+| `language` | Type: `string` <br /> Default value: `en` <br /> Language used for i18n. |
+| `arguments` | Type: `object` <br /> Default value: `{}` <br /> Extra arguments to pass to the `render()` function. |
+| `eventHandlers` | Type: `object` <br /> Default value: `{}` <br /> Custom events that can be called by the SRM. |
+
+### Outputs
+|||
+|-|-|
+| `loaded` | Type: `(el: HTMLElement) => any` <br /> Emits an event when the module has been loaded. |
+| `rendered` | Type: `(args: any) => any` <br /> Emits an event when the module has been rendered. |
