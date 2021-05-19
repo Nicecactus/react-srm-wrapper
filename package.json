@@ -23,6 +23,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "@robingoupil/srm": "0.1.x",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^5.2.0"
