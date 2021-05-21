@@ -10,7 +10,7 @@ interface SRMMethods {
 }
 
 export interface Props {
-  assetManifestUrl: string;
+  originUrl: string;
   exportPath: string;
   basename?: string;
   language?: string;
@@ -21,7 +21,7 @@ export interface Props {
 }
 
 export function ReactSRMWrapper({
-  assetManifestUrl,
+  originUrl,
   exportPath,
   basename,
   language,
@@ -37,7 +37,7 @@ export function ReactSRMWrapper({
   const [srmMethods, setSrmMethods] = useState<SRMMethods | undefined>(undefined);
 
   const initialize = async () => {
-    await ResourceFetcherService.loadSRM(assetManifestUrl);
+    await ResourceFetcherService.loadSRM(originUrl);
 
     loaded?.(anchorEl.current!);
 

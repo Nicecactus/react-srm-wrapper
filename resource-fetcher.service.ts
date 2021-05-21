@@ -19,27 +19,27 @@ export class ResourceFetcherService {
     styles: {},
   };
 
-  public static async loadSRM(assetManifestUrl: string): Promise<void> {
-    const assetManifest = await ResourceFetcherService.loadManifest(assetManifestUrl);
+  public static async loadSRM(originUrl: string): Promise<void> {
+    const assetManifest = await ResourceFetcherService.loadManifest(originUrl);
     if (!assetManifest || !assetManifest.entrypoints) {
       return;
     }
 
-    const origin = new URL(`${assetManifestUrl}/..`).href;
     await Promise.all(assetManifest.entrypoints.map(asset => {
       const [ext] = asset.match(/\.\w+$/) || [];
 
       switch (ext) {
         case '.js':
-          return ResourceFetcherService.loadScript(`${origin}${asset}`);
+          return ResourceFetcherService.loadScript(new URL(asset, originUrl).href);
         case '.css':
-          return ResourceFetcherService.loadStyle(`${origin}${asset}`);
+          return ResourceFetcherService.loadStyle(new URL(asset, originUrl).href);
       }
       return;
     }));
   }
 
-  private static async loadManifest(url: string): Promise<AssetManifest> {
+  private static async loadManifest(originUrl: string): Promise<AssetManifest> {
+    const url = new URL('asset-manifest.json', originUrl).href;
     if (!ResourceFetcherService.resourceCache.assetManifests[url]) {
       ResourceFetcherService.resourceCache.assetManifests[url] = fetch(url).then(r => r.json());
     }

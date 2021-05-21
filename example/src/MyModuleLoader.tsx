@@ -5,7 +5,7 @@ const MyModuleLoader = () => {
   return (
     <>
       <h2>React SRM wrapper</h2>
-      <ReactSRMWrapper assetManifestUrl={process.env.REACT_APP_ASSET_MANIFEST_URL!} exportPath="testing.test" />
+      <ReactSRMWrapper originUrl={process.env.REACT_APP_ASSET_MANIFEST_URL!} exportPath="testing.test" />
     </>
   )
 };
