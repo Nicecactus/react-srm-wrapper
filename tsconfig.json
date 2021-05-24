@@ -21,7 +21,13 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
     "."

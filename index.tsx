@@ -37,6 +37,9 @@ export function ReactSRMWrapper({
   const [srmMethods, setSrmMethods] = useState<SRMMethods | undefined>(undefined);
 
   const initialize = async () => {
+    if (originUrl && !originUrl.endsWith('/')) {
+      originUrl += '/';
+    }
     await ResourceFetcherService.loadSRM(originUrl);
 
     loaded?.(anchorEl.current!);
