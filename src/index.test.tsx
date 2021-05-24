@@ -1,7 +1,7 @@
-import { SRM } from '../dist'
+import { ReactSRMWrapper } from '../dist'
 
-describe('SRM', () => {
+describe('ReactSRMWrapper', () => {
   it('is truthy', () => {
-    expect(SRM).toBeTruthy()
+    expect(ReactSRMWrapper).toBeTruthy()
   })
 })
