@@ -1,9 +1,9 @@
 {
-  "name": "@robingoupil/react-srm-wrapper",
+  "name": "@nicecactus/react-srm-wrapper",
   "version": "0.1.4",
-  "author": "Robin Goupil",
+  "author": "rgoupil",
   "license": "MIT",
-  "repository": "rgoupil/react-srm-wrapper",
+  "repository": "nicecactus/react-srm-wrapper",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "index.tsx",
@@ -22,7 +22,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "@robingoupil/srm": "0.1.x",
+    "@nicecactus/srm": "0.1.x",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^5.2.0"

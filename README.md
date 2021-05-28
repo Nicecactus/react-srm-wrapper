@@ -15,10 +15,10 @@
 
 ## Quick start
 
-Install `@robingoupil/react-srm-wrapper`:
+Install `@nicecactus/react-srm-wrapper`:
 
-- with [npm](https://www.npmjs.com/): `npm install -S @robingoupil/react-srm-wrapper`
-- with [yarn](https://yarnpkg.com/): `yarn add @robingoupil/react-srm-wrapper`
+- with [npm](https://www.npmjs.com/): `npm install -S @nicecactus/react-srm-wrapper`
+- with [yarn](https://yarnpkg.com/): `yarn add @nicecactus/react-srm-wrapper`
 
 Create a loader component for your SRM.  
 We will assume that:
@@ -29,7 +29,7 @@ We will assume that:
 #### **`MyModuleLoader.tsx`**
 ```tsx
 import React from 'react'
-import { ReactSRMWrapper } from '@robingoupil/react-srm-wrapper';
+import { ReactSRMWrapper } from '@nicecactus/react-srm-wrapper';
 
 const MyModuleLoader = () => {
   return (
@@ -47,7 +47,7 @@ Expose the loader in your router ([example for React Router](https://reactrouter
 
 ## API Reference
 
-### [ReactSRMWrapper](https://github.com/rgoupil/react-srm-wrapper/blob/master/index.tsx)
+### [ReactSRMWrapper](https://github.com/nicecactus/react-srm-wrapper/blob/master/index.tsx)
 
 |||
 |-|-|

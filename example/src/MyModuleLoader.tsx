@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactSRMWrapper } from '@robingoupil/react-srm-wrapper';
+import { ReactSRMWrapper } from '@nicecactus/react-srm-wrapper';
 
 const MyModuleLoader = () => {
   return (
