@@ -4,9 +4,14 @@ import { getObjectFromPath } from './getObjectFromPath';
 import { useHistory } from 'react-router-dom';
 import urljoin from 'url-join';
 
+interface SRMEvent {
+  [value: string]: any;
+}
+
 interface SRMMethods {
   setBasename: (basename: string) => string;
   setLanguage: (language: string) => string;
+  setEvent: (data: SRMEvent) => SRMEvent;
 }
 
 export interface Props {
@@ -56,6 +61,13 @@ export function ReactSRMWrapper({
   useEffect(() => {
     execute();
   }, [anchorEl, initialized])
+
+
+  useEffect(() => {
+    if (event) {
+      srmMethods?.setEvent(event);
+    }
+  }, [event])
 
   const execute = () => {
     if (executed || !anchorEl.current || !initialized) {
