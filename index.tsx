@@ -14,6 +14,7 @@ export interface Props {
   exportPath: string;
   basename?: string;
   language?: string;
+  event?: { [key: string]: any };
   arguments?: any;
   eventHandlers?: { [id: string]: (...args: Array<any>) => Promise<any> };
   loaded?: (el: HTMLElement) => any;
@@ -25,6 +26,7 @@ export function ReactSRMWrapper({
   exportPath,
   basename,
   language,
+  event,
   arguments: renderArguments,
   eventHandlers,
   loaded,
@@ -70,6 +72,7 @@ export function ReactSRMWrapper({
       element: anchorEl.current,
       basename: basename,
       language: language,
+      event: event,
       navigate: (commands: any[], _options: any) => history.push(urljoin(commands)),
       sendEvent: (id: string, ...args: Array<any>) => eventHandlers?.[id]?.(...args),
       ...renderArguments,
